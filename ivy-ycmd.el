@@ -75,8 +75,7 @@ ivy, and jumps to the one selected by the user."
     (--when-let (bounds-of-thing-at-point 'symbol)
       (goto-char (car it)))
     (ycmd--run-completer-command "GoToReferences"
-      (lambda (response)
-        (ivy-ycmd--handle-response response)))))
+      #'ivy-ycmd--handle-response)))
 
 (provide 'ivy-ycmd)
 ;;; ivy-ycmd.el ends here
