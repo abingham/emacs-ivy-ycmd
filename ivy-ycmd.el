@@ -4,6 +4,9 @@
 
 ;; Author: Austin Bingham <austin.bingham@gmail.com>
 ;; Keywords: tools
+;; Version: 0.0.1
+;; URL: https://github.com/abingham/emacs-ivy-ycmd
+;; Package-Requires: ((ycmd "1.3") (emacs "24") (ivy "0.10.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -31,7 +34,7 @@
 (require 'ycmd)
 
 (defun ivy-ycmd--handle-selection (selection)
-  "Jump to the file/line indicated by `selection'."
+  "Jump to the file/line indicated by SELECTION."
   (with-ivy-window
     (save-match-data
       (let* ((loc-data (cdr selection))
@@ -43,10 +46,10 @@
         (forward-line (- line-number 1))))))
 
 (defun ivy-ycmd--make-selection-entry (location)
-  "Create an ivy selection entry from `location'.
+  "Create an ivy selection entry from LOCATION.
 
 The entry will be a cons-sell with a display-string as the car
-and `location' as the cdr."
+and LOCATION as the cdr."
   (cons (make-symbol
          (format "%s:%s\t%s"
                  (cdr (assq 'filepath location))
@@ -55,7 +58,7 @@ and `location' as the cdr."
         location))
 
 (defun ivy-ycmd--handle-response (response)
-  "List the file locations in `response' with ivy."
+  "List the file locations in RESPONSE with ivy."
   (ivy-read "Goto: "
             (mapcar #'ivy-ycmd--make-selection-entry response)
             :action #'ivy-ycmd--handle-selection
