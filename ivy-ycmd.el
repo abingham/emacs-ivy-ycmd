@@ -6,7 +6,7 @@
 ;; Keywords: tools
 ;; Version: 0.0.1
 ;; URL: https://github.com/abingham/emacs-ivy-ycmd
-;; Package-Requires: ((ycmd "1.3") (emacs "24") (ivy "0.10.0"))
+;; Package-Requires: ((ycmd "1.3") (emacs "24") (ivy "0.10.0") (dash "2.14.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
